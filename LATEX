@@ -1,0 +1,130 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{fancyhdr} 
+\usepackage{xcolor}
+\usepackage[left=1in, right=1.2in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{color}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.6pt} 
+\renewcommand{\headrule}{{\color{cyan}\hrule width\headwidth height\headrulewidth}} 
+\fancyhead[L]{\textcolor{cyan}{\textbf{QUADRTIC EQUATIONS}}}
+\fancyhead[R]{\textcolor{cyan}{73}}                  
+\fancyfoot[C]{2019-20}  
+\setlength{\headheight}{25pt}
+\setlength{\headsep}{15pt}
+\begin{document}
+
+\noindent (ii)\quad Since \(x(x+1) + 8 = x^2 + x + 8\) and \((x + 2)(x - 2) = x^2 - 4\) \\
+\hspace*{1.7em}Therefore, \hspace*{3em} \(x^2 + x + 8 = x^2 - 4\) \\
+\hspace*{1.8em} i.e., 
+\hspace*{7em} \(x + 12 = 0\) \\
+\hspace*{1.6em} It is not of the form \(ax^2 + bx + c = 0\). \\
+\hspace*{1.6em} Therefore, the given equation is not a quadratic equation.
+
+\vspace{1em}
+
+\noindent (iii)\quad Here,
+\hspace*{1.5em} LHS \(= x(2x + 3) = 2x^2 + 3x\) \\
+\hspace*{1.5em} So, 
+\hspace*{3em} \(x(2x + 3) = x^2 + 1\) can be rewritten as \\
+\hspace*{7em} \(2x^2 + 3x = x^2 + 1\) \\
+\hspace*{1.5em} Therefore, we get \hspace{1em} \(x^2 + 3x - 1 = 0\) \\
+\hspace*{1.5em} It is of the form \(ax^2 + bx + c = 0\). \\
+\hspace*{1.5em} So, the given equation is a quadratic equation.
+
+\vspace{1em}
+
+\noindent (iv)\quad Here, 
+\hspace*{1.5em} LHS \(= (x+2)^3 = x^3 + 6x^2 + 12x + 8\) \\
+\hspace*{1.5em} Therefore, 
+\hspace*{3em} \((x+2)^3 = x^3 - 4\) can be rewritten as \\
+\hspace*{6em} \(x^3 + 6x^2 + 12x + 8 = x^3 - 4\) \\
+\hspace*{1.5em} i.e., 
+\hspace*{4em} \(6x^2 + 12x + 12 = 0\) \quad or, \quad \(x^2 + 2x + 2 = 0\) \\
+\hspace*{1.5em} It is of the form \(ax^2 + bx + c = 0\). \\
+\hspace*{1.5em} So, the given equation is a quadratic equation.
+
+\vspace{1em}
+
+\noindent \textcolor{cyan}{\textbf{Remark:}} Be careful! In (ii) above, the given equation appears to be a quadratic equation, but it is not a quadratic equation.
+
+ In (iv) above, the given equation appears to be a cubic equation (an equation of degree 3) and not a quadratic equation. But it turns out to be a quadratic equation. As you can see, often we need to simplify the given equation before deciding whether it is quadratic or not.
+
+\vspace{1.5em}
+\begin{center}
+    \textcolor{cyan}{\textbf{EXERCISE 4.1}}
+\end{center}
+\vspace{0.5em}
+
+\noindent \textbf{1.} Check whether the following are quadratic equations:
+
+\begin{tabbing}
+\hspace{2em} \= (i) \(\quad (x+1)^2 = 2(x-3)\) \hspace{2.8cm} \quad\= (ii) \(x^2 - 2x = (-2)(3 - x)\) \\
+\> (iii) \((x-2)(x+1) = (x-1)(x+3)\) \hspace{1.1cm}  (iv) \((x-3)(2x+1) = x(x+5)\) \\
+\> (v) \((2x - 1)(x - 3) = (x + 5)(x - 1)\) \hspace{1.1cm}  (vi) \(x^2 + 3x + 1 = (x - 2)^2\) \\
+\> (vii) \((x + 2)^3 = 2x(x^2 - 1)\) \>\hspace{0.1cm}(viii) \(x^3 - 4x^2 - x + 1 = (x - 2)^3\)
+\end{tabbing}
+
+\vspace{1em}
+
+\noindent \textbf{2.} Represent the following situations in the form of quadratic equations:
+
+\noindent (i) The area of a rectangular plot is \(528 \, \text{m}^2\). The length of the plot (in meters) is more than twice its breadth. We need to find the length and breadth of the plot.
+
+\newpage
+\fancyhead[L]{\textcolor{cyan}{\textbf{76}}} 
+\fancyhead[R]{\textcolor{cyan}{MATHEMATICS}}         
+\noindent\textcolor{cyan}{\textbf{Example 6:}}Find the dimensions of the prayer hall discussed in Section 4.1.
+
+\noindent\textcolor{cyan}{\textbf{Solution:}}In Section 4.1, we found that if the breadth of the hall is $x$ m, then $x$ satisfies the equation
+$
+2x^2 + x - 300 = 0.$
+Applying the factorisation method, we write this equation as:
+\[
+2x^2 - 24x + 25x - 300 = 0
+\]
+\[
+2x(x - 12) + 25(x - 12) = 0
+\]
+i.e, \hspace{12em}$
+(x - 12)(2x + 25) = 0$
+
+So, the roots of the given equation are $x = 12$ or $x = -12.5$. Since $x$ is the breadth of the hall, it cannot be negative.
+
+Thus, the breadth of the hall is $12$ m. Its length is $2x + 1 = 25$ m.
+
+\begin{center}
+    \textcolor{cyan}{\textbf{EXERCISE 4.2}}
+\end{center}
+
+\noindent 1. Find the roots of the following quadratic equations by factorisation:
+
+\hspace{1em}(i) $x^2 - 3x - 10 = 0$   \hspace{4em}(ii) $2x^2 + x - 6 = 0$ 
+
+\hspace{1em}(iii) $\sqrt{2}x^2 + 7x + 5\sqrt{2} = 0$ 
+\hspace{1em}(iv) $2x^2 - x + \dfrac{1}{8} = 0$ 
+
+\hspace{1em}(v) $100x^2 - 20x + 1 = 0$ \\
+\noindent 2. Solve the problems given in Example 1. \\
+\noindent 3. Find two numbers whose sum is 27 and product is 182. \\
+\noindent 4. Find two consecutive positive integers, sum of whose squares is 365. \\
+\noindent 5. The altitude of a right triangle is 7 cm less than its base. If the hypotenuse is 13 cm, find the other two sides. \\
+\noindent 6. A cottage industry produces a certain number of pottery articles in a day. It was observed on a particular day that the cost of production of each article (in rupees) was 3 more than twice the number of articles produced on that day. If the total cost of production on that day was 90, find the number of articles produced and the cost of each article.
+
+\vspace{1em}
+\noindent\textcolor{cyan}{\textbf{4.4 Solution of a Quadratic Equation by Completing the Square}}
+
+In the previous section, you have learnt one method of obtaining the roots of a quadratic equation. In this section, we shall study another method.
+
+Consider the following situation:
+
+\textit{The product of Sunita’s age (in years) two years ago and her age four years from now is one more than twice her present age. What is her present age?}
+
+To answer this, let her present age (in years) be $x$. Then the product of her ages two years ago and four years from now is:
+$(x - 2)(x + 4).$
+
+\end{document}
+
+
