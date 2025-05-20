@@ -1,0 +1,88 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath, amssymb, setspace}
+\usepackage{newtxtext,newtxmath}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{times} 
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}
+\setstretch{1.12}
+\usepackage[top=1cm, left=1.2in, right=1.4in]{geometry}
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{2019-20}
+\renewcommand{\headrulewidth}{2pt} 
+\renewcommand{\headrule}{{\color{cyan}\hrule width\headwidth height\headrulewidth}} 
+
+\fancyhead[L]{\includegraphics[width=5cm,height=2cm]{COMET.jpeg}} 
+\fancyhead[C]{\textcolor{MidnightBlue}{\Large\textbf{NCERT \vspace{0.3em} \\ \large Task-3}}}
+\fancyhead[R]{\textcolor{MidnightBlue}{K SATHVIKA \\ COMET.FWC20}}
+\setlength{\headheight}{4.5cm}
+\setlength{\headsep}{10pt}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries}{\thesection}{1em}{}
+
+\begin{document}
+ \textbf{Note that we have found the roots of $2x^2 - 5x + 3 = 0$ by factorising $2x^2 - 5x + 3$ into two linear factors and equating each factor to zero.}
+
+\vspace{1em}
+
+\noindent \textcolor{cyan}{\textbf{Example 4 :}} Find the roots of the quadratic equation $6x^2 - x - 2 = 0$.\\
+\textcolor{cyan}{\textbf{Solution :}} We have
+\[
+6x^2 - x - 2 = 6x^2 + 3x - 4x - 2
+\]
+\[
+\quad\quad\quad\quad\quad = 3x(2x + 1) - 2(2x + 1)
+\]
+\[
+\quad\quad\quad\quad\quad = (3x - 2)(2x + 1)
+\]
+
+The roots of $6x^2 - x - 2 = 0$ are the values of $x$ for which $(3x - 2)(2x + 1) = 0$ \\
+Therefore, $3x - 2 = 0$ or $2x + 1 = 0$,
+
+\[
+\text{i.e.,} \quad x = \frac{2}{3} \quad \text{or} \quad x = -\frac{1}{2}
+\]
+
+Therefore, the roots of $6x^2 - x - 2 = 0$ are $\frac{2}{3}$ and $-\frac{1}{2}$.
+
+\vspace{1em}
+
+We verify the roots, by checking that $\frac{2}{3}$ and $-\frac{1}{2}$ satisfy $6x^2 - x - 2 = 0$.
+
+\vspace{1em}
+
+\noindent \textcolor{cyan}{\textbf{Example 5 :}} Find the roots of the quadratic equation $3x^2 - 2\sqrt{6}x + 2 = 0$.\\
+\textcolor{cyan}{\textbf{Solution :}} 
+\[
+3x^2 - 2\sqrt{6}x + 2 = 3x^2 - \sqrt{6}x - \sqrt{6}x + 2
+\]
+\[
+\quad = \sqrt{3}x(\sqrt{3}x - \sqrt{2}) - \sqrt{2}(\sqrt{3}x - \sqrt{2})
+\]
+\[
+\quad = (\sqrt{3}x - \sqrt{2})(\sqrt{3}x - \sqrt{2})
+\]
+
+So, the roots of the equation are the values of $x$ for which
+\[
+(\sqrt{3}x - \sqrt{2})(\sqrt{3}x - \sqrt{2}) = 0
+\]
+
+Now, $\sqrt{3}x - \sqrt{2} = 0$ for $x = \frac{\sqrt{2}}{\sqrt{3}}$
+
+So, this root is repeated twice, one for each repeated factor $\sqrt{3}x - \sqrt{2}$.
+
+\vspace{1em}
+
+Therefore, the roots of $3x^2 - 2\sqrt{6}x + 2 = 0$ are $\dfrac{\sqrt{2}}{\sqrt{3}}, \dfrac{\sqrt{2}}{\sqrt{3}}$.
+\vspace{2cm}
+\begin{center}
+2019-20
+\end{center}
+
+\end{document}

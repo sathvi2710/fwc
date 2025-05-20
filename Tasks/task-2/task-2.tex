@@ -1,0 +1,75 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{times} 
+\usepackage{amsmath,multicol}
+\usepackage[a4paper,top=1cm,left=1.2in,bottom=5cm, right=1.4in,]{geometry}
+\usepackage{enumitem}
+\usepackage{fancybox}
+\usepackage{fancyhdr}
+\usepackage[dvipsnames]{xcolor}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{2.3pt} 
+\renewcommand{\headrule}{{\color{cyan}\hrule width\headwidth height\headrulewidth}}
+\fancyhead[L]{\includegraphics[width=5cm,height=2cm]{COMET.jpeg}} 
+\fancyhead[C]{\textcolor{MidnightBlue}{\Large\textbf{NCERT \vspace{0.3em} \\ \large Task-3}}}
+\fancyhead[R]{\textcolor{MidnightBlue}{K SATHVIKA \\ COMET.FWC20}} 
+\setlength{\headheight}{4cm}
+\setlength{\headsep}{15pt}
+\begin{document}
+
+\noindent\textbf{Q.12} \textbf{For the output F to be 1 in the logic circuit shown, the  the input combination should be:}
+
+\vspace{1em}
+\begin{center}
+    \includegraphics[width=0.6\textwidth]{circuit.png}
+\end{center}
+\vspace{1em}
+
+\noindent\textbf{Options:}
+\begin{multicols}{2}
+\begin{enumerate}[label=(\Alph*)]
+    \item \( A = 1,\ B = 1,\ C = 0 \)
+    \item \( A = 1,\ B = 0,\ C = 0 \)
+    \item \( A = 0,\ B = 1,\ C = 0 \)
+    \item \( A = 0,\ B = 0,\ C = 1 \)
+\end{enumerate}
+\end{multicols}
+\vspace{1em}
+\noindent\textbf{Solution:}
+
+\begin{itemize}
+    \item The circuit contains two logic gates receiving inputs A, B, and C. From the diagram:
+    \begin{itemize}
+        \item The first gate is an OR gate taking inputs \( A \) and \( B \): output = \( A + B \)
+        \item The second gate is a NOR gate taking the same inputs \( A \) and \( B \): output = \( \overline{A + B} \)
+        \item These two outputs are fed into an XOR gate: output = \( (A + B) \oplus \overline{A + B} \)
+        \item The result of the XOR is then passed into an OR gate with input \( C \): output \( F = [(A + B) \oplus \overline{A + B}] + C \)
+    \end{itemize}
+
+    \item Now simplify:
+    \[
+    (A + B) \oplus \overline{A + B} = 1 \quad \text{(since any value XOR its complement is 1)}
+    \]
+    \[
+    F = 1 + C = 1 \quad \text{(since OR with 1 gives 1)}
+    \]
+
+    \item So, for any values of A and B (as long as the circuit logic is valid), the output of the XOR will be 1, and OR-ing it with any \( C \) gives \( F = 1 \). Hence, **all options result in F = 1**.
+
+    \item However, the question asks: \emph{“the input combination should be”} — implying one valid combination is sufficient.
+    
+    \item Option (B): \( A = 1,\ B = 0,\ C = 0 \)
+    \[
+    A + B = 1,\quad \overline{A + B} = 0,\quad \text{XOR} = 1,\quad F = 1 + 0 = 1
+    \]
+    \item So, this is correct.
+
+\end{itemize}
+
+\vspace{1em}
+\noindent\doublebox{
+    \textbf{Correct answer: (B) \( A = 1,\ B = 0,\ C = 0 \)}
+}
+
+\end{document}
