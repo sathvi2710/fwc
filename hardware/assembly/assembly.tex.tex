@@ -1,0 +1,53 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{times} 
+\usepackage{amsmath,multicol}
+\usepackage[a4paper,top=1cm,left=1.2in,bottom=5cm, right=1.4in,]{geometry}
+\usepackage{enumitem}
+\usepackage{fancybox}
+\usepackage{fancyhdr}
+\usepackage[dvipsnames]{xcolor}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{2.3pt} 
+\renewcommand{\headrule}{{\color{MidnightBlue}\hrule width\headwidth height\headrulewidth}}
+\fancyhead[L]{\includegraphics[width=5cm,height=2cm]{COMET.jpeg}} 
+\fancyhead[C]{\textcolor{MidnightBlue}{\Large\textbf{GATE  \vspace{0.3em} \\ \large EC 2009-39}}}
+\fancyhead[R]{\textcolor{MidnightBlue}{K SATHVIKA \\ COMET.FWC20}} 
+\setlength{\headheight}{4cm}
+\setlength{\headsep}{17pt}
+\begin{document}
+\noindent
+Q39) What are the counting states $(Q_1, Q_2)$ for the counter shown in the figure below?
+
+\vspace{1em}
+\includegraphics[width=0.85\textwidth]{gate39.png}
+
+\vspace{1em}
+{\color{MidnightBlue}\textbf{Options:}}
+\begin{enumerate}[label=(\Alph*)]
+    \item 11, 10, 00, 11, 10,...
+    \item 01, 10, 11, 00, 01,...
+    \item 00, 11, 01, 10, 00,...
+    \item 01, 10, 00, 01, 10,...
+\end{enumerate}
+
+\vspace{1em}
+{\color{MidnightBlue}\subsection*{Answer and Explanation}}
+\textbf{Answer:} (D) 01, 10, 00, 01, 10,...\\
+
+\textbf{Explanation:}
+
+The circuit consists of two JK flip-flops. Their inputs are connected such that:
+\begin{itemize}
+    \item $J_1 = Q_2$, $K_1 = 1$
+    \item $J_2 = \overline{Q_1}$, $K_2 = 1$
+\end{itemize}
+
+Simulating the state transitions starting from $Q_1 = 0, Q_2 = 0$ gives the sequence:
+\[
+00 \rightarrow 01 \rightarrow 10 \rightarrow 00 \rightarrow ...
+\]
+This is a 3-state counter. The correct option that matches this sequence cyclically is option (D).
+
+\end{document}

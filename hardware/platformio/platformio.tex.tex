@@ -1,0 +1,67 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{times} 
+\usepackage{amsmath,multicol}
+\usepackage[a4paper,top=1cm,left=1.2in,bottom=5cm, right=1.4in,]{geometry}
+\usepackage{enumitem}
+\usepackage{fancybox}
+\usepackage{fancyhdr}
+\usepackage[dvipsnames]{xcolor}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{2.3pt} 
+\renewcommand{\headrule}{{\color{cyan}\hrule width\headwidth height\headrulewidth}}
+\fancyhead[L]{\includegraphics[width=5cm,height=2cm]{COMET.jpeg}} 
+\fancyhead[C]{\textcolor{MidnightBlue}{\Large\textbf{GATE\vspace{0.3em} \\ \large EC 2009-38}}}
+\fancyhead[R]{\textcolor{MidnightBlue}{K SATHVIKA \\ COMET.FWC20}} 
+\setlength{\headheight}{4cm}
+\setlength{\headsep}{15pt}
+\begin{document}
+\noindent
+Q.38 Refer to the NAND and NOR latches shown in the figure below.
+
+\begin{center}
+    \includegraphics[width=0.8\textwidth]{gate38.png} % Latch diagram
+\end{center}
+
+\vspace{0.5em}
+\noindent
+The inputs \((P_1, P_2)\) for both the latches are first made \((0,1)\), and then, after a few seconds, made \((1,1)\). The corresponding stable outputs \((Q_1, Q_2)\) are:
+
+\vspace{0.5em}
+\noindent
+\textbf{Options:}
+\begin{itemize}
+    \item[(A)] NAND: first \((0,1)\) then \((0,1)\); \quad NOR: first \((1,0)\) then \((0,0)\)
+    \item[(B)] NAND: first \((1,0)\) then \((1,0)\); \quad NOR: first \((1,0)\) then \((1,0)\)
+    \item[(C)] NAND: first \((1,0)\) then \((1,0)\); \quad NOR: first \((1,0)\) then \((0,0)\)
+    \item[(D)] NAND: first \((1,0)\) then \((1,1)\); \quad NOR: first \((0,1)\) then \((0,1)\)
+\end{itemize}
+
+\vspace{1em}
+\noindent
+{\color{violet}\textbf{Answer and Explanation}}
+
+\vspace{0.5em}
+{\color{blue}\textbf{Answer: (C)}}
+
+\vspace{0.5em}
+\textbf{NAND Latch:}
+\begin{itemize}
+    \item With inputs \((0,1)\): the latch stabilizes to \((Q_1, Q_2) = (1,0)\)
+    \item With inputs \((1,1)\): it remains at \((1,0)\)
+\end{itemize}
+
+\textbf{NOR Latch:}
+\begin{itemize}
+    \item With inputs \((0,1)\): the latch stabilizes to \((Q_1, Q_2) = (1,0)\)
+    \item With inputs \((1,1)\): it transitions to \((0,0)\)
+\end{itemize}
+
+\textbf{Final outputs:}
+\begin{itemize}
+    \item NAND Latch: \((1,0) \rightarrow (1,0)\)
+    \item NOR Latch: \((1,0) \rightarrow (0,0)\)
+\end{itemize}
+
+\end{document}
