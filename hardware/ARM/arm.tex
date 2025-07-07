@@ -1,0 +1,169 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{times}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{amsmath,multicol}
+\usepackage[a4paper,top=1cm,left=1.2in,bottom=5cm, right=1.4in,]{geometry}
+\usepackage{fancyhdr}
+\usepackage[dvipsnames]{xcolor}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{2.3pt} 
+\renewcommand{\headrule}{{\color{MidnightBlue}\hrule width\headwidth height\headrulewidth}}
+\fancyhead[L]{\includegraphics[width=5cm,height=2cm]{COMET.jpeg}} 
+\fancyhead[C]{\textcolor{MidnightBlue}{\Large\textbf{GATE  \vspace{0.3em} \\ \large EC 2009-60}}}
+\fancyhead[R]{\textcolor{MidnightBlue}{K SATHVIKA \\ COMET.FWC20}} 
+\setlength{\headheight}{4cm}
+\setlength{\headsep}{17pt}\usepackage{amsmath,multicol}
+\usepackage[a4paper,top=1cm,left=1.2in,bottom=5cm, right=1.4in,]{geometry}
+\usepackage{enumitem}
+\usepackage{fancybox}
+\usepackage{fancyhdr}
+\usepackage[dvipsnames]{xcolor}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{2.3pt} 
+\renewcommand{\headrule}{{\color{MidnightBlue}\hrule width\headwidth height\headrulewidth}}
+\fancyhead[L]{\includegraphics[width=5cm,height=2cm]{COMET.jpeg}} 
+\fancyhead[C]{\textcolor{MidnightBlue}{\Large\textbf{GATE  \vspace{0.3em} \\ \large EC 2009-39}}}
+\fancyhead[R]{\textcolor{MidnightBlue}{K SATHVIKA \\ COMET.FWC20}} 
+\setlength{\headheight}{4cm}
+\setlength{\headsep}{17pt}
+
+\begin{document}
+
+Two products are sold from a vending machine, which has two push buttons $P_1$ and $P_2$.  
+When a button is pressed, the price of the corresponding product is displayed in a 7-segment display.
+
+\begin{itemize}
+    \item If no buttons are pressed, ‘0’ is displayed, signifying Rs. 0.
+    \item If only $P_1$ is pressed, ‘2’ is displayed, signifying Rs. 2.
+    \item If only $P_2$ is pressed, ‘5’ is displayed, signifying Rs. 5.
+    \item If both $P_1$ and $P_2$ are pressed, ‘E’ is displayed, signifying “Error”.
+\end{itemize}
+
+\vspace{0.5em}
+
+The names of the segments in the 7-segment display and the glow of the display for ‘0’, ‘2’, ‘5’ and ‘E’ are shown below:
+
+\vspace{0.5cm}
+
+
+% Define each segment with rounded corners and spacing
+\newcommand{\segmenta}{\draw[very thick] (0.4,2.6) -- (1.3,2.6);}
+\newcommand{\segmentb}{\draw[very thick] (1.3,2.5) -- (1.3,1.6);}
+\newcommand{\segmentc}{\draw[very thick] (1.3,1.4) -- (1.3,0.5);}
+\newcommand{\segmentd}{\draw[very thick] (0.4,0.4) -- (1.3,0.4);}
+\newcommand{\segmente}{\draw[very thick] (0.3,1.4) -- (0.3,0.4);}
+\newcommand{\segmentf}{\draw[very thick] (0.3,2.6) -- (0.3,1.6);}
+\newcommand{\segmentg}{\draw[very thick] (0.3,1.5) -- (1.2,1.5);}
+
+% Define off segment (light gray)
+\newcommand{\segmentaoff}{\draw[gray!30] (0.3,2.7) -- (1.1,2.6);}
+\newcommand{\segmentboff}{\draw[gray!30] (1.1,2.6) -- (1.1,1.6);}
+\newcommand{\segmentcoff}{\draw[gray!30] (1.1,1.4) -- (1.1,0.4);}
+\newcommand{\segmentdoff}{\draw[gray!30] (0.5,0.4) -- (1.1,0.4);}
+\newcommand{\segmenteoff}{\draw[gray!30] (0.3,1.4) -- (0.3,0.4);}
+\newcommand{\segmentfoff}{\draw[gray!30] (0.3,2.6) -- (0.3,1.6);}
+\newcommand{\segmentgoff}{\draw[gray!30] (0.3,1.5) -- (1.1,1.5);}
+
+% Macro to draw a digit with ON/OFF segments
+\newcommand{\digitseven}[8]{%
+  \begin{scope}[xshift=#8 cm]
+    \ifnum#1=1 \segmenta \else \segmentaoff \fi
+    \ifnum#2=1 \segmentb \else \segmentboff \fi
+    \ifnum#3=1 \segmentc \else \segmentcoff \fi
+    \ifnum#4=1 \segmentd \else \segmentdoff \fi
+    \ifnum#5=1 \segmente \else \segmenteoff \fi
+    \ifnum#6=1 \segmentf \else \segmentfoff \fi
+    \ifnum#7=1 \segmentg \else \segmentgoff \fi
+  \end{scope}
+}
+
+
+\begin{center}
+\begin{tikzpicture}[scale=1.3]
+
+% Labelled segment layout
+\begin{scope}[xshift=-4cm]
+  \digitseven{1}{1}{1}{1}{1}{1}{1}{0}
+  \node at (0.7,2.8) {a};
+  \node at (1.45,2.1) {b};
+  \node at (1.45,0.85) {c};
+  \node at (0.7,0.2) {d};
+  \node at (0.0,0.85) {e};
+  \node at (0.0,2.1) {f};
+  \node at (0.7,1.75) {g};
+\end{scope}
+
+% Digit 0
+\node at (0.7,3) {0};
+\digitseven{1}{1}{1}{1}{1}{1}{0}{0}
+
+% Digit 2
+\node at (3.0,3) {2};
+\digitseven{1}{1}{0}{1}{1}{0}{1}{2.3}
+
+% Digit 5
+\node at (5.3,3) {5};
+\digitseven{1}{0}{1}{1}{0}{1}{1}{4.6}
+
+% Digit E
+\node at (7.6,3) {E};
+\digitseven{1}{0}{0}{1}{1}{1}{1}{6.9}
+
+\end{tikzpicture}
+\end{center}
+
+\vspace{0.5cm}
+
+\textbf{Consider:}
+\begin{itemize}
+    \item[(i)] Push button pressed / not pressed is equivalent to logic 1 / 0 respectively.
+    \item[(ii)] A segment glowing / not glowing in the display is equivalent to logic 1 / 0 respectively.
+\end{itemize}
+\noindent
+\textbf{Q.60 What are the minimum numbers of NOT gates and 2-input OR gates required to design the logic of the driver for this 7-segment display? }
+
+\vspace{1em}
+\begin{itemize}
+    \item[(A)] 3 NOT and 4 OR
+    \item[(B)] 2 NOT and 4 OR
+    \item[(C)] 1 NOT and 3 OR
+    \item[(D)] 2 NOT and 3 OR
+\end{itemize}
+
+\vspace{1em}
+\noindent\textcolor{MidnightBlue}{\textbf{Answer:}} (D) 2 NOT and 3 OR
+\newpage
+\pagestyle{empty}
+\subsection*{Explanation:}
+From the previous question (Q59), the simplified logic expressions for the required segments were:
+\begin{itemize}
+    \item $g = \overline{P_1} \cdot P_2$
+    \item $d = c + e$
+    \item $e = b + c$
+\end{itemize}
+
+We analyze gate usage:
+\begin{itemize}
+    \item To implement $g = \overline{P_1} \cdot P_2$ using only NOT and OR gates, apply DeMorgan’s Theorem: 
+    \[
+    g = \overline{P_1} \cdot P_2 = \overline{(\overline{\overline{P_1}} + \overline{P_2})}
+    \]
+    This form needs \textbf{2 NOTs} and \textbf{1 OR}.
+
+    \item $e = b + c$ requires \textbf{1 OR} gate.
+
+    \item $d = c + e$ requires another \textbf{1 OR} gate.
+\end{itemize}
+
+\textbf{Total:}
+\begin{itemize}
+    \item NOT gates: \textbf{2}
+    \item OR gates: \textbf{3}
+\end{itemize}
+
+\textbf Therefore, the correct answer is \textbf{(D)}.
+
+\end{document}
