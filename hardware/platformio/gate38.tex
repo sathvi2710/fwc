@@ -1,0 +1,116 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{times} 
+\usepackage{amsmath,multicol}
+\usepackage[a4paper,top=1cm,left=1.2in,bottom=5cm, right=1.4in,]{geometry}
+\usepackage{enumitem}
+\usepackage{fancybox}
+\usepackage{fancyhdr}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{url}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{2.3pt} 
+\renewcommand{\headrule}{{\color{MidnightBlue}\hrule width\headwidth height\headrulewidth}}
+\fancyhead[L]{\includegraphics[width=5cm,height=2cm]{COMET.jpeg}} 
+\fancyhead[C]{\textcolor{MidnightBlue}{\Large\textbf{GATE  \vspace{0.3em} \\ \large EC 2009-38}}}
+\fancyhead[R]{\textcolor{MidnightBlue}{K SATHVIKA \\ COMET.FWC20}} 
+\setlength{\headheight}{6cm}
+\setlength{\headsep}{19pt}
+\begin{document}
+\begin{multicols}{2}
+
+\noindent\textbf{Abstract} \\[0.5em]
+\textit{Simulation of latch behavior using Raspberry Pi Pico to demonstrate NAND and NOR latch transitions for the input combinations (0,1) → (1,1).}
+
+\vspace{1em}
+\noindent\textbf{1. Components}
+\begin{table}[h]
+\small
+\centering
+\begin{tabular}{|p{4.2cm}|c|}
+\hline
+\textbf{Component} & \textbf{Qty} \\
+\hline
+ Pico2w & 1 \\
+Push Buttons & 2 \\
+LEDs & 2 \\
+220$\Omega$ Resistors & 4 \\
+Breadboard & 1 \\
+Jumper Wires & 10 \\
+Laptop with Thonny IDE & 1 \\
+\hline
+\end{tabular}
+\caption*{Table: Components used}
+\end{table}
+
+\vspace{1em}
+\noindent\textbf{2. Setup}
+\begin{itemize}
+    \item GP15: Input P1 (Push Button)
+    \item GP14: Input P2 (Push Button)
+    \item GP16: NAND Q Output (LED)
+    \item GP17: NOR Q Output (LED)
+    \item GND and VBUS properly connected
+\end{itemize}
+
+\vspace{1em}
+\noindent\textbf{3. Observation}
+\begin{itemize}
+    \item \textbf{NAND Latch:} (0,1) → (1,0) → holds at (1,0)
+    \item \textbf{NOR Latch:} (0,1) → (1,0) → transitions to (0,0)
+\end{itemize}
+
+\end{multicols}
+\\
+\noindent\textbf{4. Truth Tables}\\
+\\
+\\
+\vspace{2em}
+\begin{minipage}{0.45\linewidth}
+\centering
+\textbf{NAND Latch} \\
+\[
+\begin{array}{|c|c|c|}
+\hline
+P1 & P2 & \text{Output (Q1, Q2)} \\
+\hline
+0 & 1 & (1, 0) \\
+1 & 1 & (1, 0) \text{ (holds)} \\
+\hline
+\end{array}
+\]
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\linewidth}
+\centering
+\textbf{NOR Latch} \\
+\[
+\begin{array}{|c|c|c|}
+\hline
+P1 & P2 & \text{Output (Q1, Q2)} \\
+\hline
+0 & 1 & (1, 0) \\
+1 & 1 & (0, 0) \\
+\hline
+\end{array}
+\]
+\end{minipage}
+
+\vspace{20em}
+\newpage
+\noindent\textbf{5. Circuit Image} \\
+\\
+\includegraphics[width=0.6\linewidth]{assembly.jpeg}
+
+
+\vspace{1em}
+\noindent\textbf{6. GitHub Code Link} \\
+\url{https://github.com/sathvi2710/fwc/blob/main/hardware/platformio/plaformio.py}
+
+\vspace{1em}
+\noindent\textbf{7. Conclusion}
+
+This project successfully demonstrates latch behavior for NAND and NOR gates using MicroPython and Raspberry Pi Pico. 
+
+\end{document}
