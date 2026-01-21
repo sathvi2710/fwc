@@ -1,0 +1,202 @@
+\documentclass[11pt,a4paper]{article}
+
+% -------------------- Packages --------------------
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{titlesec}
+
+% -------------------- Code Style --------------------
+\lstset{
+    language=C,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{red},
+    numbers=left,
+    numberstyle=\tiny,
+    stepnumber=1,
+    breaklines=true,
+    frame=single
+}
+
+% -------------------- Title --------------------
+\title{\textbf{5G NR Layer-2 PDU Structure Definitions}\\
+\vspace{0.3cm}
+\large A 3GPP-Compliant C Implementation}
+\author{\textbf{Sathvika Koppu}}
+\date{2025}
+
+% -------------------- Document --------------------
+\begin{document}
+\maketitle
+
+\tableofcontents
+\newpage
+
+% -------------------- Overview --------------------
+\section{Overview}
+This project provides a comprehensive implementation of \textbf{5G New Radio (NR) Layer-2 Protocol Data Unit (PDU) header structures} in the C programming language.  
+All definitions are strictly derived from official \textbf{3GPP Release 15/16 specifications} and are designed to be bit-accurate.
+
+The implementation covers the following Layer-2 protocols:
+\begin{itemize}
+    \item Service Data Adaptation Protocol (SDAP)
+    \item Packet Data Convergence Protocol (PDCP)
+    \item Radio Link Control (RLC)
+    \item Medium Access Control (MAC)
+\end{itemize}
+
+% -------------------- Features --------------------
+\section{Features}
+\begin{itemize}
+    \item 24+ PDU header structures across all Layer-2 protocols
+    \item Bit-field accurate representations matching 3GPP specifications
+    \item Multiple variants for different sequence number lengths
+    \item Extensive in-code documentation
+    \item Zero external dependencies (pure C implementation)
+\end{itemize}
+
+% -------------------- Structure Coverage --------------------
+\section{Structure Coverage}
+
+\subsection{SDAP Layer (TS 37.324)}
+\begin{itemize}
+    \item SDAP Data PDU with RQI and RDI
+    \item SDAP Data PDU without RQI and RDI
+\end{itemize}
+
+\subsection{PDCP Layer (TS 38.323)}
+\begin{itemize}
+    \item PDCP Data PDU with 12-bit Sequence Number
+    \item PDCP Data PDU with 18-bit Sequence Number
+    \item PDCP Control PDU (Status Report)
+    \item PDCP Control PDU (ROHC Feedback)
+\end{itemize}
+
+\subsection{RLC Layer (TS 38.322)}
+\begin{itemize}
+    \item RLC Transparent Mode (TM)
+    \item RLC Unacknowledged Mode (UM) – 6-bit and 12-bit SN
+    \item RLC Acknowledged Mode (AM) – 12-bit and 18-bit SN
+    \item RLC AM STATUS PDU
+\end{itemize}
+
+\subsection{MAC Layer (TS 38.321)}
+\begin{itemize}
+    \item MAC Subheader with 8-bit Length field
+    \item MAC Subheader with 16-bit Length field
+    \item MAC Subheader for fixed-size Control Elements
+    \item MAC Subheader with extension bit
+\end{itemize}
+
+% -------------------- Quick Start --------------------
+\section{Quick Start}
+
+\subsection{Repository Cloning}
+\begin{lstlisting}[language=bash]
+git clone https://github.com/YOUR_USERNAME/5G-NR-Layer2-PDU-Structures.git
+cd 5G-NR-Layer2-PDU-Structures
+\end{lstlisting}
+
+\subsection{Compilation and Testing}
+\begin{lstlisting}[language=bash]
+cd src
+gcc test.c -o abc
+./abc
+\end{lstlisting}
+
+\subsection{Expected Output}
+\begin{lstlisting}
+=== 5G NR PDU Structure Sizes ===
+
+SDAP Layer:
+  SDAP Data PDU (with RQI/RDI):    1 byte(s)
+  SDAP Data PDU (without RQI/RDI): 1 byte(s)
+
+PDCP Layer:
+  PDCP Data PDU (12-bit SN):       2 byte(s)
+  PDCP Data PDU (18-bit SN):       3 byte(s)
+
+=== Total Structures Defined: 24 ===
+All 5G NR Layer-2 PDU structures compiled successfully!
+\end{lstlisting}
+
+% -------------------- Technical Details --------------------
+\section{Technical Details}
+
+\subsection{Bit-Field Ordering}
+All bit-fields follow an \textbf{MSB-first} ordering as shown in 3GPP diagrams.  
+Note that C bit-field ordering is compiler dependent and must be validated during deployment.
+
+\subsection{Multi-Byte Field Reconstruction}
+Sequence numbers spanning multiple bytes are reconstructed as follows:
+\begin{lstlisting}
+uint16_t sn = (pdu->sn_high << 8) | pdu->sn_low;
+\end{lstlisting}
+
+\subsection{Variable-Length PDUs}
+The following elements are documented but not fully implemented due to variable length:
+\begin{itemize}
+    \item PDCP Status Report Bitmap
+    \item RLC AM STATUS PDU NACK blocks
+    \item MAC Control Element payloads
+\end{itemize}
+
+% -------------------- 3GPP References --------------------
+\section{3GPP Specification References}
+
+\begin{longtable}{lll}
+\toprule
+\textbf{Protocol} & \textbf{Specification} & \textbf{Title} \\
+\midrule
+SDAP & TS 37.324 & Service Data Adaptation Protocol \\
+PDCP & TS 38.323 & Packet Data Convergence Protocol \\
+RLC & TS 38.322 & Radio Link Control Protocol \\
+MAC & TS 38.321 & Medium Access Control Protocol \\
+\bottomrule
+\end{longtable}
+
+% -------------------- Academic Context --------------------
+\section{Academic Context}
+This project was developed as part of an advanced wireless communications curriculum.  
+It demonstrates:
+\begin{itemize}
+    \item In-depth understanding of 3GPP specifications
+    \item Low-level protocol engineering using C
+    \item Systematic modeling of complex protocol stacks
+\end{itemize}
+
+% -------------------- Acknowledgments --------------------
+\section{Acknowledgments}
+\begin{itemize}
+    \item 3GPP for comprehensive technical specifications
+    \item IIIT Bangalore for academic and research support
+    \item The wireless communications research community
+\end{itemize}
+
+% -------------------- Project Statistics --------------------
+\section{Project Statistics}
+\begin{itemize}
+    \item Lines of Code: $\sim$1500+
+    \item Structures Defined: 24
+    \item Protocols Covered: SDAP, PDCP, RLC, MAC
+    \item Documentation Coverage: 100\%
+\end{itemize}
+
+% -------------------- Citation --------------------
+\section{Citation}
+\begin{verbatim}
+@software{5g_nr_layer2_pdu,
+  author = {Sathvika Koppu},
+  title  = {5G NR Layer-2 PDU Structure Definitions},
+  year   = {2025}
+}
+\end{verbatim}
+
+\end{document}
