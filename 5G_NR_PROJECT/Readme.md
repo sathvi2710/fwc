@@ -59,8 +59,8 @@ cd 5G-NR-Layer2-PDU-Structures
 ### Compile and Test
 ```bash
 cd src
-gcc test_compile.c -o test
-./test
+gcc test.c -o abc
+./abc
 ```
 
 ### Expected Output
