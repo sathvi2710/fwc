@@ -1,0 +1,212 @@
+\documentclass[conference]{IEEEtran}
+\usepackage{cite}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{float}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue,
+    citecolor=black
+}
+
+\title{5G NR Layer-2 PDU Structure Definitions\\
+\large A 3GPP-Compliant C Implementation}
+
+\author{
+\IEEEauthorblockN{Sathvika Koppu}
+\IEEEauthorblockA{COMETFWC020\\
+Project Intern,IIITB COMET\\
+India\\
+Email: sathvikareddy2710@gmail.com
+}
+}
+
+\begin{document}
+\maketitle
+
+% ================= ABSTRACT =================
+\begin{abstract}
+Fifth Generation New Radio (5G NR) introduces a flexible and service-oriented protocol architecture to support enhanced Mobile Broadband (eMBB), Ultra-Reliable Low-Latency Communications (URLLC), and massive Machine-Type Communications (mMTC).
+Layer-2 protocols play a critical role in ensuring reliability, quality of service, and efficient radio resource utilization.
+
+This paper presents a comprehensive and bit-accurate implementation of 5G NR Layer-2 Protocol Data Unit (PDU) header structures using the C programming language, strictly adhering to 3GPP Release 15 and Release 16 specifications.
+The implementation covers SDAP, PDCP, RLC, and MAC layers and is intended for academic learning, protocol understanding, and research prototyping.
+\end{abstract}
+
+\begin{IEEEkeywords}
+5G NR, Layer-2, SDAP, PDCP, RLC, MAC, PDU, 3GPP, C Programming
+\end{IEEEkeywords}
+
+% ================= INTRODUCTION =================
+\section{Introduction}
+5G New Radio (NR) represents a major evolution in cellular communication systems, designed to meet diverse performance requirements such as high throughput, ultra-low latency, and massive device connectivity.
+These capabilities are enabled by a modular protocol stack defined by the 3rd Generation Partnership Project (3GPP).
+
+Layer-2 of the 5G NR protocol stack is responsible for data adaptation, security, reliability, segmentation, reordering, and multiplexing.
+Although the 3GPP specifications describe these protocols in detail, their PDU formats are complex and difficult to interpret directly.
+This project bridges the gap between specification and implementation by translating Layer-2 PDU definitions into precise C structures.
+
+% ================= MOTIVATION =================
+\section{Motivation}
+Understanding real-world protocol behavior requires more than theoretical knowledge.
+Students and early-stage engineers often struggle to visualize how PDUs are structured at the bit level.
+This project was motivated by the need for:
+\begin{itemize}
+    \item A clear mapping between 3GPP diagrams and actual code
+    \item A reusable reference for protocol stack learning
+    \item Interview and placement-oriented preparation for telecom roles
+\end{itemize}
+
+% ================= LAYER-2 OVERVIEW =================
+\section{5G NR Layer-2 Protocol Stack}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\columnwidth,height=10cm]{ps.png}
+\caption{5G NR Layer-2 Protocol Stack}
+\label{fig:layer2stack}
+\end{figure}
+
+The 5G NR Layer-2 stack consists of four primary protocols:
+\begin{itemize}
+    \item SDAP (Service Data Adaptation Protocol)
+    \item PDCP (Packet Data Convergence Protocol)
+    \item RLC (Radio Link Control)
+    \item MAC (Medium Access Control)
+\end{itemize}
+
+Each protocol performs a distinct function and adds its own PDU header before passing data to the lower layer.
+
+% ================= PDU FLOW =================
+\section{Layer-2 PDU Processing Flow}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\columnwidth]{pdu_flow.png}
+\caption{Layer-2 PDU Formation and Flow}
+\label{fig:pduflow}
+\end{figure}
+
+User data enters the Layer-2 stack at the SDAP layer and is progressively encapsulated with protocol-specific headers before transmission over the physical layer.
+
+% ================= SDAP =================
+\section{SDAP PDU Design}
+SDAP maps QoS flows to Data Radio Bearers (DRBs).
+The implemented SDAP PDUs include:
+\begin{itemize}
+    \item SDAP Data PDU with Reflective QoS Indicator (RQI) and Reflective DRB Indicator (RDI)
+    \item SDAP Data PDU without RQI and RDI
+\end{itemize}
+
+These PDUs are implemented using compact 1-byte headers, ensuring minimal overhead.
+
+% ================= PDCP =================
+\section{PDCP PDU Design}
+PDCP provides security, header compression, and reordering.
+This project supports:
+\begin{itemize}
+    \item PDCP Data PDUs with 12-bit and 18-bit sequence numbers
+    \item PDCP Control PDUs for status reporting
+    \item PDCP Control PDUs for ROHC feedback
+\end{itemize}
+
+Bit-fields are used to accurately represent PDCP header formats as shown in the specification.
+
+% ================= RLC =================
+\section{RLC PDU Design}
+RLC ensures segmentation, reassembly, and reliability.
+The following modes are implemented:
+\begin{itemize}
+    \item Unacknowledged Mode (UM) – 6-bit and 12-bit SN
+    \item Acknowledged Mode (AM) – 12-bit and 18-bit SN
+    \item RLC AM STATUS PDUs
+\end{itemize}
+
+Segmented and complete PDUs are modeled separately for clarity.
+
+% ================= MAC =================
+\section{MAC PDU Design}
+The MAC layer handles multiplexing, scheduling, and priority handling.
+Implemented MAC subheaders include:
+\begin{itemize}
+    \item Short and long MAC subheaders
+    \item Fixed-size MAC Control Element subheaders
+    \item MAC subheaders with extension fields
+\end{itemize}
+
+These definitions closely follow TS 38.321.
+
+% ================= IMPLEMENTATION =================
+\section{Implementation Methodology}
+All PDUs are implemented using C bit-fields.
+Multi-byte fields are reconstructed using:
+\begin{equation}
+SN = (SN_{high} \ll 8) | SN_{low}
+\end{equation}
+
+Compiler dependency of bit-fields is documented as a limitation.
+
+% ================= OUTPUT =================
+\section{Testing and Output Verification}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\columnwidth]{output.png}
+\caption{Program Output Showing PDU Structure Sizes}
+\label{fig:output}
+\end{figure}
+
+A test program verifies the implementation by printing structure sizes using the \texttt{sizeof()} operator.
+
+% ================= APPLICATIONS =================
+\section{Applications}
+\begin{itemize}
+    \item Academic learning and protocol visualization
+    \item 5G protocol simulation
+    \item SDR-based experimentation
+    \item Telecom placement preparation
+\end{itemize}
+
+% ================= LIMITATIONS =================
+\section{Limitations}
+\begin{itemize}
+    \item Compiler-dependent bit-field layout
+    \item No full packet encoding or decoding
+    \item Not suitable for production systems
+\end{itemize}
+
+% ================= FUTURE WORK =================
+\section{Future Enhancements}
+\begin{itemize}
+    \item Full encoder and decoder implementation
+    \item Integration with GNU Radio and SDRs
+    \item Support for future 3GPP releases
+\end{itemize}
+
+% ================= CONCLUSION =================
+\section{Conclusion}
+This paper presents a detailed and specification-compliant implementation of 5G NR Layer-2 PDU header structures in C.
+The project effectively bridges theoretical 3GPP documentation and practical implementation, making it valuable for students, researchers, and engineers.
+
+% ================= REFERENCES =================
+\begin{thebibliography}{00}
+
+\bibitem{sdap}
+3GPP TS 37.324, ``Service Data Adaptation Protocol (SDAP) specification.''
+
+\bibitem{pdcp}
+3GPP TS 38.323, ``Packet Data Convergence Protocol (PDCP) specification.''
+
+\bibitem{rlc}
+3GPP TS 38.322, ``Radio Link Control (RLC) protocol specification.''
+
+\bibitem{mac}
+3GPP TS 38.321, ``Medium Access Control (MAC) specification.''
+
+\end{thebibliography}
+
+\end{document}
